@@ -17,70 +17,70 @@ public class Mastermind {
         c[5] = "Green";   
         c[6] = "Purple";  
         c[7] = "Orange"; 
+       
 
-        // Randomly select 4 colors from the array, excluding values 0 and 1
-        String computerColor1 = getRandomColor(c);
-        String computerColor2 = getRandomColor(c);
-        String computerColor3 = getRandomColor(c);
-        String computerColor4 = getRandomColor(c);
+        String[] codeArray = new String[4];
+        codeArray[0] = getRandomColor(c);
+        codeArray[1] = getRandomColor(c);
+        codeArray[2] = getRandomColor(c);
+        codeArray[3] = getRandomColor(c);
 
         int colorsright = 0;
         int rowloop;
 
         System.out.println("Guess the code using the following colors: Yellow, Red, Blue, Green, Purple, and Orange. You get 10 attempts before you lose. The colour input is case-sensitive so start with capital letters.");
         for (rowloop = 1; rowloop <= 10; rowloop++) {
-            String userColor1, userColor2, userColor3, userColor4;
+        	  String[] userColor = new String[4];
 
             System.out.println("Color one");
-            userColor1 = input.nextLine();
+            userColor[0] = input.nextLine();
             System.out.println("Color two");
-            userColor2 = input.nextLine();
+            userColor[1] = input.nextLine();
             System.out.println("Color three");
-            userColor3 = input.nextLine();
+            userColor[2] = input.nextLine();
             System.out.println("Color four");
-            userColor4 = input.nextLine();
+            userColor[3] = input.nextLine();
 
-            colorsright = 0; // Reset colorsright for each guess
+            colorsright = 0;
 
-            // Check each user's color against the computer's colors
-            if (userColor1.equals(computerColor1)) {
+            if (userColor[0].equals(codeArray[0] )) {
                 System.out.println("black");
                 colorsright++;
-            } else if (userColor1.equals(computerColor2) || userColor1.equals(computerColor3) || userColor1.equals(computerColor4)) {
+            } else if (userColor[1].equals(codeArray[0]) || userColor[0].equals(codeArray[2]) || userColor[0].equals(codeArray[3])) {
                 System.out.println("white");
             } else {
                 System.out.println("false");
             }
 
-            if (userColor2.equals(computerColor2)) {
+            if (userColor[1].equals(codeArray[1])) {
                 System.out.println("black");
                 colorsright++;
-            } else if (userColor2.equals(computerColor1) || userColor2.equals(computerColor3) || userColor2.equals(computerColor4)) {
+            } else if (userColor[1].equals(codeArray[0] ) || userColor[1].equals(codeArray[2]) || userColor[1].equals(codeArray[3])) {
                 System.out.println("white");
             } else {
                 System.out.println("false");
             }
 
-            if (userColor3.equals(computerColor3)) {
+            if (userColor[2].equals(codeArray[2])) {
                 System.out.println("black");
                 colorsright++;
-            } else if (userColor3.equals(computerColor1) || userColor3.equals(computerColor2) || userColor3.equals(computerColor4)) {
+            } else if (userColor[2].equals(codeArray[0] ) || userColor[2].equals(codeArray[1]) || userColor[2].equals(codeArray[3])) {
                 System.out.println("white");
             } else {
                 System.out.println("false");
             }
 
-            if (userColor4.equals(computerColor4)) {
+            if (userColor[3].equals(codeArray[3])) {
                 System.out.println("black");
                 colorsright++;
-            } else if (userColor4.equals(computerColor1) || userColor4.equals(computerColor2) || userColor4.equals(computerColor3)) {
+            } else if (userColor[3].equals(codeArray[0] ) || userColor[3].equals(codeArray[1]) || userColor[3].equals(codeArray[2])) {
                 System.out.println("white");
             } else {
                 System.out.println("false");
             }
 
             if (colorsright == 4) {
-                break; // Exit the loop if the user has guessed all colors correctly
+                break;
             }
         }
 
@@ -91,9 +91,8 @@ public class Mastermind {
         }
     }
 
-    // Method to get a random color from the array excluding values 0 and 1
     private static String getRandomColor(String[] colors) {
-        int index = random.nextInt(colors.length - 2) + 2; // Generates a random index from 2 to 7
+        int index = random.nextInt(colors.length - 2) + 2; 
         return colors[index];
     }
 }
