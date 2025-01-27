@@ -41,12 +41,12 @@ public class Mastermind_functie {
 
         for (int i = 0; i < 4; i++) {
             if (userColors[i].equalsIgnoreCase(codeArray[i])) {
-                result += "Black\n";  // Correct color in correct position
+                result += "Black\n";  // juiste kleur juiste plek
                 colorsRight++;
             } else if (hasColorInOtherPosition(userColors[i], i)) {
-                result += "White\n";  // Correct color in wrong position
+                result += "White\n";  // juiste kleur maar verkeerde positie
             } else {
-                result += "None\n";   // Color not in code
+                result += "None\n";   // kleur niet in de code
             }
         }
 
